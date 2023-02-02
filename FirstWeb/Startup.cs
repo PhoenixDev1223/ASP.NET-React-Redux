@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using FirstWeb.Models;
+using FirstWeb.Services;
 
 namespace FirstWeb
 {
@@ -23,6 +24,7 @@ namespace FirstWeb
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.Configure<BookStoreDatabaseSettings>(Configuration.GetSection("BookStoreDatabase"));
+            services.AddSingleton<BooksService>();
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
